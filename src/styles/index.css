@@ -1,12 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+ 
+ body{
+    background-color: rgb(241, 228, 241);
+ }
+ul li {
+    list-style: none;
+}
 
-/* 
+h1{
+    color: blueviolet;
+    font-family: 'Pacifico', cursive;
 
-    You can write your own styles here...
-    
-    
-    ...Or you can use the import command to include 
-    other sylesheets into your bunde as well, e.j:
-    
-    import 'relative/path/to/stylesheet.scss';
-
-*/
+}
