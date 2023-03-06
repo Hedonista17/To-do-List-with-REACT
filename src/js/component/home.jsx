@@ -20,7 +20,7 @@ const Home = () => {
 						value={inputValue} 
 						onKeyPress={(e) => {if(e.key === "Enter"){
 							setTareas(tareas.concat(inputValue))
-						}}}
+							setInputValue(" ")} }}
 						placeholder="Escriba tarea a realizar"
 					></input>
 				</li>
@@ -44,7 +44,7 @@ const Home = () => {
 				))}
 			</ul>
 
-			<div className="mx-3" id="contador"> {tareas.length}  tareas por realizar 😫</div>
+			<div className="mx-3" id="contador"> { tareas.length == 1 ? tareas.length + " tarea por realizar 😫" :  tareas.length +" tareas por realizar 😫"} </div>
 		</div>
 	);
 };
