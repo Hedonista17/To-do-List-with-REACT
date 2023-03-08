@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { container } from "webpack";
 
-
-//include images into your bundle
 
 
 //create your first component
@@ -17,8 +14,8 @@ const Home = () => {
 	return (
 		<div className="container">
 			<div className="row">
+				<h1 className="my-5"> ⭐ To Do List with React ⭐</h1>
 				<div className="col-6">
-					<h1 className="my-5"> ⭐ To Do List with React ⭐</h1>
 					<ul className="list-group">
 						<li className="list-group-item col-6">
 
@@ -32,28 +29,27 @@ const Home = () => {
 										setInputValue(" ")
 									}
 								}}
-								
+
 							></input>
 						</li>
 						{tareas.map((tarea, index) => (
 							<li className="list-group-item">
 								{tarea}
-
-								<i class="fa-solid fa-check-to-slot fa-xl mx-4"
+                                 
+								<i class="fa-solid fa-check-to-slot fa-xl mx-4 mt-1 "
 									onClick={() => {
-
 										setRealizadas(realizadas.concat(tarea))
-										setTareas(tareas.filter((tarea, indiceActual) => index != indiceActual)
-										)
+
 									}}
 								></i>
 								<i
-									className="fa-regular fa-trash-can fa-xl"
+									className="fa-regular fa-trash-can fa-xl mt-1"
 									onClick={() =>
 										setTareas(
 											tareas.filter((tarea, indiceActual) => index != indiceActual)
 										)
 									} ></i>
+									
 							</li>
 						))}
 					</ul>
@@ -61,19 +57,33 @@ const Home = () => {
 					<div className="mx-3" id="contador"> {tareas.length == 1 ? tareas.length + " tarea por realizar 😫" : tareas.length + " tareas por realizar 😫"} </div>
 				</div>
 				<div className="col-6">
-					{realizadas.map((realizada) => {
+					<h2> Tareas Realizadas ✔️</h2>
+					{realizadas.map((realizada, index) => {
 						return (
-							
-							<ul className="list-group">
-							
-							</ul>
+							<>
+
+								<ul className="list-group">
+
+									<li className="list-group-item">
+										{realizada}
+										<i
+											className="fa-regular fa-trash-can fa-xl mx-4 mt-1"
+											onClick={() =>
+												setRealizadas(
+													realizadas.filter((realizada, indiceActual) => index != indiceActual)
+												)
+											} ></i>
+									</li>
+								</ul>
+							</>
 						)
 
 					}
 					)}
+					<div className="mx-3" id="contador"> {realizadas.length == 1 ? realizadas.length + " tarea realizada 😊" : realizadas.length + " tareas realizadas 😊"} </div>
 				</div>
 			</div>
-		</div>
+		</div>  
 
 	);
 };
