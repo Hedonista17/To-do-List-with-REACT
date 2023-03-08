@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 
 
-
+const fecha = new Date()
 //create your first component
 const Home = () => {
-	const [inputValue, setInputValue] = useState();
+	const [inputValue, setInputValue] = useState("");
 	const [tareas, setTareas] = useState([]);
 	const [realizadas, setRealizadas] = useState([]);
+	
+	
 
 	useEffect(() => {
 		console.log(realizadas)
@@ -24,13 +26,13 @@ const Home = () => {
 								onChange={(e) => setInputValue(e.target.value)}
 								value={inputValue}
 								onKeyDown={(e) => {
-									if (e.key === "Enter" && document.getElementById("input").value !== "") {
+									if (e.key === "Enter" && inputValue.length >= 2) {
 										setTareas(tareas.concat(inputValue))
 										setInputValue(" ")
 									}
 								}}
 
-							></input>
+						></input>
 						</li>
 						{tareas.map((tarea, index) => (
 							<li className="list-group-item">
@@ -39,7 +41,8 @@ const Home = () => {
 								<i class="fa-solid fa-check-to-slot fa-xl mx-4 mt-1 "
 									onClick={() => {
 										setRealizadas(realizadas.concat(tarea))
-
+										setTareas(tareas.splice(tarea))
+                                              
 									}}
 								></i>
 								<i
@@ -64,15 +67,18 @@ const Home = () => {
 
 								<ul className="list-group">
 
-									<li className="list-group-item">
-										{realizada}
+									<li className="list-group-item ">
+										
+										{realizada}  {fecha.toLocaleDateString()} {fecha.toLocaleTimeString()}
 										<i
-											className="fa-regular fa-trash-can fa-xl mx-4 mt-1"
+											className="fa-regular fa-trash-can fa-xl mx-4  mt-1"
 											onClick={() =>
 												setRealizadas(
 													realizadas.filter((realizada, indiceActual) => index != indiceActual)
 												)
 											} ></i>
+										
+										
 									</li>
 								</ul>
 							</>
