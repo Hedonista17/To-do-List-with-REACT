@@ -13,6 +13,8 @@ const Home = () => {
 	useEffect(() => {
 		console.log(realizadas)
 	}, [realizadas])
+
+	
 	return (
 		<div className="container">
 			<div className="row">
@@ -41,7 +43,9 @@ const Home = () => {
 								<i class="fa-solid fa-check-to-slot fa-xl mx-4 mt-1 "
 									onClick={() => {
 										setRealizadas(realizadas.concat(tarea))
-										setTareas(tareas.splice(tarea))
+										setTareas(
+											tareas.filter((tarea, indiceActual) => index != indiceActual)
+										)
                                               
 									}}
 								></i>
